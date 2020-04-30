@@ -12,9 +12,16 @@ Downloadlogfolder = os.path.join(expanduser("~"), 'Downloads')
 os.chdir(StrCurrentPath)
 
 # [0:] inculde .py file itself
-Arguments = sys.argv[1:]
-SourceFile = os.path.join(StrCurrentPath, Arguments[0])
 
+if len(sys.argv) == 2:
+    Arguments=sys.argv[1:]
+    SourceFile=os.path.join(StrCurrentPath,Arguments[0])
+    print('Target file = ' + Arguments[0] + '\n\n')
+else:
+    print('You must pass a file behind the .py file to scan!')
+    print('Like')
+    print('python MG_Char_air_scan.py ken.air\n\n')
+    exit(1)
 
 
 # --- Functions -----
@@ -71,11 +78,10 @@ def DETECT_CLSN2(output_raw):
 
 # ---- Main -----
 
-if SourceFile:
-    SourceFile = os.path.join(StrCurrentPath, Arguments[0])
+if os.path.isfile(SourceFile):
     print('File is ' + SourceFile)
 else:
-    print('Please pass a filename behind the .py file')
+    print('Please pass a REAL! filename behind the .py file')
     exit(1)
 
 print('\n\n')
@@ -83,7 +89,7 @@ print('--- Python script to scan duplicated Hitbox in Characters air file ---')
 print('--- by ' + Author + ' ---')
 print('\n\n')
 
-with open(SourceFile, 'r', 200000, encoding="utf-8") as WorkingFile:
+with open(SourceFile, 'r', encoding="utf-8") as WorkingFile:
     i = int(1)
 
     Current_Anim = int(-9999)
