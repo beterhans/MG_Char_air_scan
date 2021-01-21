@@ -1,3 +1,10 @@
+# Use this regex not work on notepad++. use wxMEdit or Textmate on Mac
+# Clsn2Default.*\n(^\s+Clsn2\[.*\n)+^Clsn2\:
+# Use this regex on Notepad++
+# Clsn2Default.*\r\n(^\s+Clsn2\[.*\r\n)+^Clsn2\:
+# Replace Clsn2:
+
+
 import sys, os, math, platform, re, time, datetime
 import csv
 from os.path import expanduser
